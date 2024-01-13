@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="vehiculos.css">
+    <title>Listado de Vehiculos</title>
+</head>
+
+<body>
+    <h1>Listado de Vehículos</h1>
+
+    <table class="tabla" border="4">
+        <thead>
+            <tr>
+                <th>Marca y Modelo</th>
+                <th>Año</th>
+                <th>Kilómetros</th>
+                <th>Precio en Pesos</th>
+                <th>Precio en Dólares</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="tablaVehiculos">
+        </tbody>
+    </table>
+
+    <a href="registro.html">Volver</a>
+    <button class="boton" type="button" onclick="cerrarSesion()">Cerrar Sesión</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Este código se ejecutará después de que la página esté completamente cargada
+    
+            // Obtener los datos de vehículos desde localStorage
+            var vehiculos = JSON.parse(localStorage.getItem('vehiculosData')) || [];
+    
+            // Obtener el elemento de la tabla donde se insertarán las filas
+            var tablaVehiculos = document.getElementById("tablaVehiculos");
+    
+            // Iterar sobre los vehículos y agregar filas a la tabla
+            vehiculos.forEach(function(vehiculo) {
+                console.log(vehiculo)
+                var fila = "<tr>" +
+                    "<td>" + vehiculo['marMod'] + "</td>" +
+                    "<td>" + vehiculo['año'] + "</td>" +
+                    "<td>" + vehiculo['km'] + "</td>" +
+                    "<td>" + vehiculo['pesos'] + "</td>" +
+                    "<td>" + vehiculo['dolares'] + "</td>" +
+                    "<td><button class='boton' type='button' id='eliminar'" + 
+                        "onclick='eliminarFila(this)'>Eliminar</button></td>" + // Agrega un botón eliminar
+                    "</tr>";
+    
+                // Agregar la fila a la tabla
+                tablaVehiculos.innerHTML += fila;
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="registro.css">
+    <title>Planilla de Registro</title>
+</head>
+
+<body>
+    <h1 style="display: flex;">Planilla de Registro</h1>
+    <form class="contenedor" id="registerForm">
+        <label for="marcaModelo">Marca y Modelo:</label>
+        <input type="text" id="marcaModelo" name="marcaModelo" placeholder="Ingrese la marca y el modelo" required>
+        <br>
+        <label for="year">Año:</label>
+        <input type="text" id="year" name="year" placeholder="Ingrese el año" required>
+        <br>
+        <label for="km">KM:</label>
+        <input type="text" id="km" name="km" placeholder="Ingrese el kilometraje" required>
+        <br>
+        <label for="peso">Precio en pesos:</label>
+        <input type="text" id="peso" name="peso" placeholder="Ingrese el precio en pesos" required>
+        <br>
+        <label for="dolar">Precio en dólares::</label>
+        <input type="text" id="dolar" name="dolar" placeholder="Ingrese el precio en dólares" required>
+        <br>
+        <button class="boton" type="button" id="botonRegistrar" onclick="registrarVehiculo()">Registrar Vehículo</button>
+        <button class="boton" type="button" onclick="cerrarSesion()">Cerrar Sesión</button>
+        <a href="vehiculos.html">Vehiculos</a>
+    </form>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
