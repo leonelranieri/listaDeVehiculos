@@ -95,7 +95,7 @@ function registrarVehiculo() {
 
 function cerrarSesion() {
   if (true) {
-    window.location.href = "ingreso.html";
+    window.location.href = "index.html";
   }
 }
 
