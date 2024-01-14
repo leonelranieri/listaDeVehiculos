@@ -30,19 +30,20 @@
 
     <a href="registro.html">Volver</a>
     <button class="boton" type="button" onclick="cerrarSesion()">Cerrar Sesión</button>
+    <button class="boton" type="button" onclick="enviarEmail()">Enviar Email</button>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             // Este código se ejecutará después de que la página esté completamente cargada
-    
+
             // Obtener los datos de vehículos desde localStorage
             var vehiculos = JSON.parse(localStorage.getItem('vehiculosData')) || [];
-    
+
             // Obtener el elemento de la tabla donde se insertarán las filas
             var tablaVehiculos = document.getElementById("tablaVehiculos");
-    
+
             // Iterar sobre los vehículos y agregar filas a la tabla
-            vehiculos.forEach(function(vehiculo) {
+            vehiculos.forEach(function (vehiculo) {
                 console.log(vehiculo)
                 var fila = "<tr>" +
                     "<td>" + vehiculo['marMod'] + "</td>" +
@@ -50,14 +51,43 @@
                     "<td>" + vehiculo['km'] + "</td>" +
                     "<td>" + vehiculo['pesos'] + "</td>" +
                     "<td>" + vehiculo['dolares'] + "</td>" +
-                    "<td><button class='boton' type='button' id='eliminar'" + 
-                        "onclick='eliminarFila(this)'>Eliminar</button></td>" + // Agrega un botón eliminar
+                    "<td><button class='boton' type='button' id='eliminar'" +
+                    "onclick='eliminarFila(this)'>Eliminar</button></td>" + // Agrega un botón eliminar
                     "</tr>";
-    
+
                 // Agregar la fila a la tabla
                 tablaVehiculos.innerHTML += fila;
             });
         });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sesionActiva = localStorage.getItem("sesionActiva");
+
+            if (!sesionActiva) {   // Si no hay indicador de sesión, redirigir a la pág de inicio
+                window.location.href = "index.html"
+            }
+        })
+    </script>
+    <script>
+        function enviarEmail() {
+            // Obtener los datos de vehículos desde localStorage
+            var vehiculos = JSON.parse(localStorage.getItem('vehiculosData')) || [];
+
+            // Verificar si hay datos en el localStorage
+            if (vehiculos.length === 0) {
+                alert("No hay datos para enviar por correo.");
+                return;
+            }
+
+            // Convertir los datos a una cadena de texto
+            var datosTexto = JSON.stringify(vehiculos);
+
+            // Enviar los datos por correo electrónico (puedes utilizar un servicio de envío de correo)
+            // En este ejemplo, se usa el servicio 'mailto' del navegador
+            window.location.href = 'mailto:leonelranieri0501@hotmail.com?subject=Datos de la tabla&body=' + encodeURIComponent(datosTexto);
+        }
+
     </script>
     <script src="script.js"></script>
 </body>

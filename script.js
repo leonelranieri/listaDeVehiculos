@@ -12,6 +12,7 @@ function validarLogin() {
   const pwd = document.getElementById("pwd").value;
 
   if (nombre === "admin" && pwd === "secreta") {
+    localStorage.setItem("sesionActiva", "true");  // Almacenar un indicador de sesión en el almacenamiento local 
     window.location.href = "registro.html";
   } else {
     alert("Nombre de usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.");
@@ -94,9 +95,8 @@ function registrarVehiculo() {
 }
 
 function cerrarSesion() {
-  if (true) {
-    window.location.href = "index.html";
-  }
+  localStorage.removeItem("sesionActiva"); // Eliminar el indicador de sesión del almac local
+  window.location.href = "index.html";
 }
 
 function eliminarFila(boton) {
@@ -123,3 +123,5 @@ function eliminarFila(boton) {
     console.error('Índice de fila no válido:', indice);
   }
 }
+
+

@@ -2,8 +2,14 @@ body {
     display: flex;
     justify-content: center; 
     height: 100vh; 
-    margin: 0;
+    margin: 0.6em auto;
     background-color: rgb(0, 0, 0);
+}
+
+.contenedor {
+    display: flex;
+    width: 25%;
+    height: 85%;
 }
 
 h1 {
@@ -15,10 +21,10 @@ h1 {
 
 a {
     position: relative;
-    top: 3vw;
-    left: 18vw;
+    top: 0.5vw;
+    left: 10vw;
     padding: 10px;
-    color: black;
+    color: rgb(5, 5, 5);
     font-size: 1.4em;
     text-decoration: none;
 }
