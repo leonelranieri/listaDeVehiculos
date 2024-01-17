@@ -46,6 +46,33 @@ function eliminarFila(boton) {
         + encodeURIComponent(datosFormateados);
 }
 
+function guardarEnArchivo(vehiculosJSON) {
+  // Crear un objeto Blob que contiene el JSON
+  const blob = new Blob([vehiculosJSON], { type: 'application/json' });
+
+  // Crear un enlace de descarga
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'vehiculos.json';
+
+  // Añadir el enlace al DOM y hacer clic para descargar
+  document.body.appendChild(a);
+  a.click();
+
+  // Limpiar el enlace del DOM
+  document.body.removeChild(a);
+}
+
+function descargarArchivo() {
+    const storedVehiculosJSON = localStorage.getItem('vehiculosData');
+    console.log(storedVehiculosJSON.length);
+    if (storedVehiculosJSON.length > 2) {
+      guardarEnArchivo(storedVehiculosJSON);
+    } else {
+      alert("No hay datos de vehículos para descargar.");
+    }
+  }
+  
 document.addEventListener("DOMContentLoaded", function () {
     const sesionActiva = localStorage.getItem("sesionActiva");
 

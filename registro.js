@@ -37,6 +37,15 @@ function obtenerValores() {
   return [marcaModelo, year, km, peso, dolar];
 }
 
+function limpiarCampos() {
+  // Limpiar campos
+  document.getElementById("marcaModelo").value = "";
+  document.getElementById("year").value = "";
+  document.getElementById("km").value = "";
+  document.getElementById("peso").value = "";
+  document.getElementById("dolar").value = "";
+}
+
 function registrarVehiculo() {
     let [marcaModelo, year, km, peso, dolar] = obtenerValores();  
     
@@ -79,16 +88,9 @@ function registrarVehiculo() {
     
       // Almacenar la cadena JSON en localStorage con una clave específica
       localStorage.setItem('vehiculosData', vehiculosJSON);
-    }
-  }
 
-  function limpiarCampos() {
-    // Limpiar campos
-    document.getElementById("marcaModelo").value = "";
-    document.getElementById("year").value = "";
-    document.getElementById("km").value = "";
-    document.getElementById("peso").value = "";
-    document.getElementById("dolar").value = "";
+      guardarEnArchivo(vehiculosJSON);
+    }
   }
 
   document.addEventListener("DOMContentLoaded", function () {
